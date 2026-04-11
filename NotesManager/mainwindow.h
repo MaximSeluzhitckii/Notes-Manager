@@ -5,6 +5,7 @@
 #include <QtSql>
 #include <QSqlQuery>
 #include <QListWidget>
+#include "manager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,11 +26,13 @@ private slots:
     void on_listWidget_itemClicked(QListWidgetItem *item);
     void on_lineEdit_textChanged(const QString &text);
 
+
 private:
     Ui::MainWindow *ui;
+    Manager manager;
 
     void setupDatabase();
-    void loadNotes(const QString &search = "");
+    void loadNotes(QListWidget* listWidget, const QString &search = "");
     void addNoteToDB(const QString &title);
     void deleteNoteFromDB(int id);
     void saveContentToDB(int id, const QString &content);
